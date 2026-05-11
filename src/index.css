@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0f172a;
+  --color-paper: #faf8f4;
+  --color-cream: #f0ebe3;
+  --color-navy: #1e3a5f;
+  --color-navy-deep: #152a45;
+  --color-gold: #c9a227;
+  --color-gold-soft: #e8d89a;
+  --color-accent: #2d6a8f;
+  --color-success: #1d6b4a;
+  --color-danger: #9b2c2c;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[var(--color-paper)] text-[var(--color-ink)] font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    @apply tracking-tight text-[var(--color-navy)];
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-[var(--color-gold)];
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .prose-module {
+    @apply max-w-3xl text-[1.05rem] leading-relaxed text-slate-800;
+  }
+
+  .prose-module h2 {
+    @apply mt-10 mb-4 text-2xl font-semibold;
+  }
+
+  .prose-module h3 {
+    @apply mt-8 mb-3 text-xl font-semibold;
+  }
+
+  .prose-module p {
+    @apply mb-4;
+  }
+
+  .prose-module ul {
+    @apply mb-4 list-disc space-y-2 pl-6;
+  }
+
+  .prose-module ol {
+    @apply mb-4 list-decimal space-y-2 pl-6;
+  }
+
+  .prose-module strong {
+    @apply font-semibold text-slate-900;
+  }
+
+  .prose-module a {
+    @apply text-[var(--color-accent)] underline decoration-2 underline-offset-2 hover:text-[var(--color-navy)];
+  }
+
+  .prose-module blockquote {
+    @apply border-l-4 border-[var(--color-gold)] bg-[var(--color-cream)]/80 py-2 pl-4 pr-3 italic text-slate-700;
+  }
+
+  .prose-module table {
+    @apply my-6 w-full border-collapse overflow-hidden rounded-xl text-sm;
+  }
+
+  .prose-module th {
+    @apply bg-[var(--color-navy)] px-3 py-2 text-left font-semibold text-[var(--color-paper)];
+  }
+
+  .prose-module td {
+    @apply border border-slate-200 bg-white px-3 py-2 align-top;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    transition-property: color, background-color, border-color, opacity, box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors bg-[var(--color-navy)] text-[var(--color-paper)] shadow-md hover:bg-[var(--color-navy-deep)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors border-2 border-[var(--color-navy)] bg-transparent text-[var(--color-navy)] hover:bg-[var(--color-cream)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors text-[var(--color-navy)] hover:bg-[var(--color-cream)];
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm backdrop-blur-sm;
+  }
+
+  .ring-progress {
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+}
