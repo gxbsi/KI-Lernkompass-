@@ -53,7 +53,7 @@ export function SelfCheckBlock({ questions, onAllCorrectChange }: Props) {
                 return (
                   <label
                     key={o.id}
-                    className={`flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 transition-colors ${ring}`}
+                    className={`flex min-w-0 cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 transition-colors ${ring}`}
                   >
                     <input
                       type="radio"
@@ -62,7 +62,7 @@ export function SelfCheckBlock({ questions, onAllCorrectChange }: Props) {
                       checked={selected}
                       onChange={() => setAnswers((prev) => ({ ...prev, [q.id]: o.id }))}
                     />
-                    <span className="text-sm leading-snug text-slate-800">{o.label}</span>
+                    <span className="min-w-0 flex-1 text-sm leading-snug text-slate-800 break-words">{o.label}</span>
                   </label>
                 );
               })}

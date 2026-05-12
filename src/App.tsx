@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AppShell } from "@/components/AppShell";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { useProgress } from "@/hooks/useProgress";
 import { setFontScale } from "@/lib/progress";
@@ -15,6 +16,7 @@ function AppRoutes() {
 
   return (
     <ProgressProvider value={progress}>
+      <ScrollToTop />
       <Routes>
         <Route
           element={

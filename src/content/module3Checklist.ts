@@ -4,71 +4,81 @@ export type ChecklistCategory = {
   items: { id: string; text: string }[];
 };
 
-/** Kurz-Checkliste „Worauf muss ich achten?“ – angelehnt an Modul-3-Kriterienkatalog. */
+/**
+ * Vollständige Schnell-Checkliste aus dem Handbuch „Modul 3“ (tabellarische Kriterien),
+ * angepasst an die im Dokument genannten Nummern und K.O.-Markierungen.
+ */
 export const module3ChecklistCategories: ChecklistCategory[] = [
   {
-    id: "cat-recht",
-    title: "Datenschutz & Recht",
+    id: "cl-cat1",
+    title: "Kategorie 1: Datenschutz & Recht",
     items: [
-      { id: "m3-chk-dsgvo", text: "Datenschutzerklärung: Zwecke, Datenarten, Speicherdauer, Rechte nachvollziehbar?" },
-      { id: "m3-chk-server", text: "Serverstandort / Drittland: transparent? AV-Vertrag nötig?" },
-      { id: "m3-chk-min", text: "Datenminimierung: werden unnötige Daten erhoben?" },
-      { id: "m3-chk-minderjaehrige", text: "Mindestalter / Einwilligung: Prozesse für Minderjährige klar?" },
-      { id: "m3-chk-ai-act", text: "Transparenz zum Modell / Risiko: Hinweise zum Einsatz & AI Act-Kontext?" },
+      { id: "cl-1-1", text: "1.1 DSGVO-Konformität & Datenerhebung (K.O.)" },
+      { id: "cl-1-2", text: "1.2 Serverstandort & Datenspeicherung (K.O.)" },
+      { id: "cl-1-3", text: "1.3 Datensparsamkeit / Datenminimierung (K.O.)" },
+      { id: "cl-1-4", text: "1.4 Mindestalter & Einwilligungsmanagement (K.O.)" },
+      { id: "cl-1-5", text: "1.5 Transparenz des KI-Modells & EU AI Act (K.O.)" },
     ],
   },
   {
-    id: "cat-tech",
-    title: "Technik & Betrieb",
+    id: "cl-cat2",
+    title: "Kategorie 2: Technische Grundvoraussetzungen",
     items: [
-      { id: "m3-chk-stabilitaet", text: "Stabilität, Performance, Offline-Fallbacks für den Einsatzort?" },
-      { id: "m3-chk-export", text: "Export/Portabilität: können Inhalte/Ergebnisse sicher mitgenommen werden?" },
-      { id: "m3-chk-support", text: "Support, Doku, Statusseite: erreichbar und verständlich?" },
+      { id: "cl-2-1", text: "2.1 Datenverschlüsselung & Sicherheit (K.O.)" },
+      { id: "cl-2-2", text: "2.2 Gerätekompatibilität & Bandbreitentoleranz" },
+      { id: "cl-2-3", text: "2.3 Technischer Support & Wartung" },
     ],
   },
   {
-    id: "cat-ux",
-    title: "Benutzerfreundlichkeit",
+    id: "cl-cat3",
+    title: "Kategorie 3: Benutzerfreundlichkeit (Usability)",
     items: [
-      { id: "m3-chk-induktiv", text: "Oberfläche induktiv: erkenne ich nächste Schritte ohne lange Suche?" },
-      { id: "m3-chk-einarbeitung", text: "Einarbeitungsaufwand: angemessene Tutorials / Onboarding?" },
-      { id: "m3-chk-mobile", text: "Mobile Nutzbarkeit: funktioniert es auf Tablets/Smartphones?" },
+      { id: "cl-3-1", text: "3.1 Navigation & Orientierung (K.O.)" },
+      { id: "cl-3-2", text: "3.2 Schulungsaufwand & Einarbeitungszeit" },
+      { id: "cl-3-3", text: "3.3 Rollenverteilung & Funktion für Lehrkräfte" },
+      { id: "cl-3-4", text: "3.4 Responsives Design" },
     ],
   },
   {
-    id: "cat-a11y",
-    title: "Barrierefreiheit",
+    id: "cl-cat4",
+    title: "Kategorie 4: Barrierefreiheit & Inklusion",
     items: [
-      { id: "m3-chk-screenreader", text: "Screenreader: semantische Struktur, Alternativtexte?" },
-      { id: "m3-chk-untertitel", text: "Videos: Untertitel / Transkripte verfügbar?" },
-      { id: "m3-chk-kontrast", text: "Kontrast & Schrift: lesbar und anpassbar?" },
-      { id: "m3-chk-tastatur", text: "Tastaturbedienung: ohne Maus nutzbar?" },
-      { id: "m3-chk-sprachen", text: "Sprachen: passend zur Lerngruppe?" },
+      { id: "cl-4-1", text: "4.1 WCAG-Konformität (K.O.)" },
+      { id: "cl-4-2", text: "4.2 Mehrsprachigkeit" },
+      { id: "cl-4-3", text: "4.3 Differenzierung nach Lernbedürfnissen" },
     ],
   },
   {
-    id: "cat-kosten",
-    title: "Kosten & Werbung",
+    id: "cl-cat5",
+    title: "Kategorie 5: Kosten",
     items: [
-      { id: "m3-chk-free", text: "Kostenlose Version: welcher Funktionsumfang? zeitliche Limits?" },
-      { id: "m3-chk-ads", text: "Werbung / Tracking: für Schule akzeptabel?" },
+      { id: "cl-5-1", text: "5.1 Kostentransparent (K.O.)" },
+      { id: "cl-5-2", text: "5.2 Kostenlose Version" },
+      { id: "cl-5-3", text: "5.3 Verfügbarkeit einer Testversion" },
+      { id: "cl-5-4", text: "5.4 Nachhaltigkeit, Betriebskontinuität & Umgang mit Dekommissionierung" },
     ],
   },
   {
-    id: "cat-funktion",
-    title: "Funktion & Adaptivität",
+    id: "cl-cat6",
+    title: "Kategorie 6: Didaktik, Adaptivität & KI-Funktion",
     items: [
-      { id: "m3-chk-person", text: "Personalisierung: nachvollziehbar und abschaltbar?" },
-      { id: "m3-chk-did-fun", text: "Funktionen passen zu Aufgabenformaten (Gruppe, Individual, Projekt)?" },
+      { id: "cl-6-1", text: "6.1 Inhaltsverwaltung durch Lehrkräfte (K.O.)" },
+      { id: "cl-6-2", text: "6.2 Qualität der adaptiven Lernfunktion (K.O.)" },
+      { id: "cl-6-3", text: "6.3 Nachvollziehbarkeit & Qualität von Feedback (K.O.)" },
+      { id: "cl-6-4", text: "6.4 Kommunikations- & Kollaborationstools" },
+      { id: "cl-6-5", text: "6.5 Evidenzbasierung der Plattformwirksamkeit" },
     ],
   },
   {
-    id: "cat-didaktik",
-    title: "Didaktische Qualität",
+    id: "cl-cat7",
+    title: "Kategorie 7: Ethische Aspekte & Transparenz",
     items: [
-      { id: "m3-chk-lernmodell", text: "Implizites Lernmodell: fördert es Verstehen statt nur Drill?" },
-      { id: "m3-chk-feedback", text: "Feedbackqualität: begründend, lernförderlich, nicht nur richtig/falsch?" },
-      { id: "m3-chk-mediendidaktik", text: "Medienmix: Text/Bild/Audio sinnvoll kombinierbar?" },
+      { id: "cl-7-1", text: "7.1 Ethische Governance-Dokumentation (K.O.)" },
+      { id: "cl-7-2", text: "7.2 Nicht-Diskriminierung durch KI-Algorithmen (K.O.)" },
+      { id: "cl-7-3", text: "7.3 Menschliche Aufsicht und Korrigierbarkeit" },
+      { id: "cl-7-4", text: "7.4 Transparenz des KI-Einsatzes" },
+      { id: "cl-7-5", text: "7.5 Externe Evaluation" },
+      { id: "cl-7-6", text: "Link zur Umfrage (falls im Projekt vorgesehen) – Zugang dokumentieren" },
     ],
   },
 ];

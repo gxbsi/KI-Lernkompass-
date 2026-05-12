@@ -19,7 +19,7 @@ export function generateCertificatePdf(firstName: string, lastName: string): Blo
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(11);
-  doc.text("KI Mini-Lernplattform (Projekt)", margin, 32);
+  doc.text("KI-Lernkompass (Projekt)", margin, 32);
 
   doc.setTextColor(15, 23, 42);
   doc.setFontSize(13);

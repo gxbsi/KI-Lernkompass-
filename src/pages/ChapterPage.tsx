@@ -37,7 +37,7 @@ export function ChapterPage() {
   const next = idx < mod.chapters.length - 1 ? mod.chapters[idx + 1] : null;
 
   const completed = isChapterDone(state, mod.id, chapter.id);
-  const showChecklist = chapter.id === "m3-checkliste-ui";
+  const showChecklist = chapter.id === "m3-checkliste-interaktiv";
 
   const markComplete = () => {
     update((s) => setChapterDone(s, mod.id, chapter.id, true));
@@ -46,19 +46,19 @@ export function ChapterPage() {
   const canComplete = chapter.selfChecks.length === 0 || selfOk;
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[260px_1fr]">
-      <aside className="lg:sticky lg:top-6 lg:self-start" aria-label="Kapitelnavigation">
+    <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,280px)_1fr]">
+      <aside className="min-w-0 lg:sticky lg:top-6 lg:self-start" aria-label="Kapitelnavigation">
         <div className="card space-y-2 py-4">
           <Link to={`/modul/${mod.id}`} className="text-sm font-semibold text-[var(--color-accent)] hover:underline">
             ← Modulübersicht
           </Link>
           <p className="font-display text-lg font-semibold text-[var(--color-navy)]">{mod.title}</p>
-          <nav className="space-y-1 border-t border-slate-100 pt-3" aria-label="Kapitel">
+            <nav className="space-y-1 border-t border-slate-100 pt-3" aria-label="Kapitel">
             {mod.chapters.map((ch) => (
               <Link
                 key={ch.id}
                 to={`/modul/${mod.id}/kapitel/${ch.id}`}
-                className={`block rounded-lg px-2 py-1.5 text-sm ${
+                className={`block rounded-lg px-2 py-1.5 text-sm leading-snug break-words ${
                   ch.id === chapter.id ? "bg-[var(--color-cream)] font-semibold text-[var(--color-navy)]" : "text-slate-600 hover:bg-slate-50"
                 }`}
               >
@@ -78,7 +78,7 @@ export function ChapterPage() {
           {chapter.summary ? <p className="mt-3 max-w-3xl text-lg text-slate-600">{chapter.summary}</p> : null}
         </header>
 
-        <div className="pt-8">
+        <div className="prose-surface mt-8">
           <MarkdownBody markdown={chapter.bodyMd.trim()} />
         </div>
 
@@ -97,30 +97,30 @@ export function ChapterPage() {
           <p className="mt-8 text-sm text-slate-600">Kein Self-Check in diesem Kapitel – du kannst es direkt abschließen.</p>
         )}
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-8">
-          <div className="flex flex-wrap gap-3">
+        <div className="mt-10 flex flex-col gap-6 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {prev ? (
-              <Link className="btn-secondary" to={`/modul/${mod.id}/kapitel/${prev.id}`}>
+              <Link className="btn-secondary w-full justify-center sm:w-auto" to={`/modul/${mod.id}/kapitel/${prev.id}`}>
                 ← Vorheriges Kapitel
               </Link>
             ) : null}
             {next ? (
-              <Link className="btn-primary" to={`/modul/${mod.id}/kapitel/${next.id}`}>
+              <Link className="btn-primary w-full justify-center sm:w-auto" to={`/modul/${mod.id}/kapitel/${next.id}`}>
                 Nächstes Kapitel →
               </Link>
             ) : (
-              <Link className="btn-primary" to={`/modul/${mod.id}`}>
+              <Link className="btn-primary w-full justify-center sm:w-auto" to={`/modul/${mod.id}`}>
                 Zur Modulübersicht
               </Link>
             )}
           </div>
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:max-w-sm sm:items-end">
             {completed ? (
               <span className="text-sm font-semibold text-emerald-800">Kapitel als erledigt markiert.</span>
             ) : (
               <button
                 type="button"
-                className="btn-primary"
+                className="btn-primary w-full sm:w-auto"
                 disabled={!canComplete}
                 onClick={markComplete}
               >
@@ -128,7 +128,7 @@ export function ChapterPage() {
               </button>
             )}
             {chapter.selfChecks.length > 0 && !selfOk ? (
-              <span className="max-w-xs text-right text-xs text-slate-500">
+              <span className="text-xs leading-relaxed text-slate-500 sm:text-right">
                 Beantworte zuerst alle Self-Check-Fragen richtig.
               </span>
             ) : null}

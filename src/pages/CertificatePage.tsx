@@ -10,17 +10,17 @@ export function CertificatePage() {
 
   if (!state.finalQuizPassed) {
     return (
-      <div className="card max-w-xl">
+      <div className="card max-w-xl min-w-0">
         <h1 className="font-display text-2xl font-semibold text-[var(--color-navy)]">Zertifikat noch gesperrt</h1>
         <p className="mt-3 text-slate-700">
           Bitte schließe zuerst alle drei Modulquizzes und den Gesamt-Endtest ab. Danach kannst du hier ein PDF
           erstellen.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link className="btn-primary" to="/">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Link className="btn-primary w-full justify-center text-center sm:w-auto" to="/">
             Zur Startseite
           </Link>
-          <Link className="btn-secondary" to="/gesamtquiz">
+          <Link className="btn-secondary w-full justify-center text-center sm:w-auto" to="/gesamtquiz">
             Zum Gesamt-Endtest
           </Link>
         </div>
@@ -48,14 +48,14 @@ export function CertificatePage() {
   };
 
   return (
-    <div className="card max-w-xl">
-      <h1 className="font-display text-3xl font-semibold text-[var(--color-navy)]">PDF-Zertifikat</h1>
+    <div className="card max-w-xl min-w-0">
+      <h1 className="font-display text-3xl font-semibold text-[var(--color-navy)]">PDF-Lernnachweis</h1>
       <p className="mt-3 text-slate-700">
         Glückwunsch – du hast alle Prüfungen bestanden. Gib deinen Namen ein und lade deinen Lernnachweis als PDF
         herunter. Es werden keine Daten an einen Server gesendet.
       </p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        <div>
+      <div className="mt-8 grid min-w-0 gap-4 sm:grid-cols-2">
+        <div className="min-w-0">
           <label className="text-sm font-semibold text-slate-800" htmlFor="vn">
             Vorname
           </label>
@@ -67,7 +67,7 @@ export function CertificatePage() {
             autoComplete="given-name"
           />
         </div>
-        <div>
+        <div className="min-w-0">
           <label className="text-sm font-semibold text-slate-800" htmlFor="nn">
             Nachname
           </label>
@@ -81,16 +81,16 @@ export function CertificatePage() {
         </div>
       </div>
       <p className="mt-2 text-xs text-slate-500">Mindestens 2 Zeichen pro Feld.</p>
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <button
           type="button"
-          className="btn-primary"
+          className="btn-primary w-full justify-center sm:w-auto"
           disabled={busy || first.trim().length < 2 || last.trim().length < 2}
           onClick={() => void download()}
         >
           {busy ? "Erzeuge PDF…" : "PDF herunterladen"}
         </button>
-        <Link className="btn-secondary" to="/">
+        <Link className="btn-secondary w-full justify-center text-center sm:w-auto" to="/">
           Zurück zur Startseite
         </Link>
       </div>

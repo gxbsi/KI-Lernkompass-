@@ -15,8 +15,8 @@ export function ModuleHubPage() {
   const quizPassed = Boolean(state.moduleQuizPassed[mod.id]);
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
-      <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start" aria-label="Kapitelnavigation">
+    <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,280px)_1fr]">
+      <aside className="min-w-0 space-y-4 lg:sticky lg:top-6 lg:self-start" aria-label="Kapitelnavigation">
         <div className="card py-5">
           <p className="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">{mod.shortTitle}</p>
           <h1 className="mt-2 font-display text-2xl font-semibold text-[var(--color-navy)]">{mod.title}</h1>
@@ -43,7 +43,7 @@ export function ModuleHubPage() {
                 <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white text-xs font-bold text-[var(--color-navy)] shadow-sm">
                   {i + 1}
                 </span>
-                <span className="leading-snug">{ch.title}</span>
+                <span className="min-w-0 flex-1 leading-snug break-words">{ch.title}</span>
               </Link>
             );
           })}
@@ -63,7 +63,7 @@ export function ModuleHubPage() {
         </div>
       </aside>
 
-      <div className="space-y-6">
+      <div className="min-w-0 space-y-6">
         <div className="card">
           <h2 className="font-display text-2xl font-semibold text-[var(--color-navy)]">Überblick</h2>
           <p className="mt-3 text-slate-700">
@@ -72,13 +72,16 @@ export function ModuleHubPage() {
           </p>
           <ol className="mt-6 space-y-3">
             {mod.chapters.map((ch, i) => (
-              <li key={ch.id} className="flex flex-wrap items-start justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3">
-                <div>
+              <li
+                key={ch.id}
+                className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 sm:flex-row sm:items-start sm:justify-between"
+              >
+                <div className="min-w-0">
                   <p className="text-xs font-bold uppercase text-slate-500">Kapitel {i + 1}</p>
-                  <p className="font-semibold text-slate-900">{ch.title}</p>
-                  {ch.summary ? <p className="mt-1 text-sm text-slate-600">{ch.summary}</p> : null}
+                  <p className="font-semibold text-slate-900 break-words">{ch.title}</p>
+                  {ch.summary ? <p className="mt-1 text-sm text-slate-600 break-words">{ch.summary}</p> : null}
                 </div>
-                <div className="flex shrink-0 flex-col items-end gap-2">
+                <div className="flex shrink-0 flex-col gap-2 sm:items-end">
                   <span
                     className={`rounded-full px-2 py-1 text-xs font-semibold ${
                       isChapterDone(state, mod.id, ch.id) ? "bg-emerald-100 text-emerald-900" : "bg-white text-slate-600"

@@ -27,10 +27,19 @@ Nach dem Deploy: in den Projekteinstellungen prüfen, dass **Root** auf den Ordn
 
 ## Inhalte anpassen
 
-- Module und Kapitel: [`src/content/module1.ts`](src/content/module1.ts), [`module2.ts`](src/content/module2.ts), [`module3.ts`](src/content/module3.ts)
+Die **Fließtexte** der Module 1–3 stammen **inhaltlich 1:1 aus den Word-Handbüchern** und liegen als generierte Kapitel vor:
+
+- [`src/content/module1.generated.ts`](src/content/module1.generated.ts) ← `Modul-1-KI-Grundlagenverstaendnis.docx`
+- [`src/content/module2.generated.ts`](src/content/module2.generated.ts) ← `Orientierungskompass KI.docx`
+- [`src/content/module3.generated.ts`](src/content/module3.generated.ts) ← `Modul 3 Analysekriterien.docx` (alle Kategorien, Checklisten-Tabelle, Quellen)
+
+Die Dateien [`module1.ts`](src/content/module1.ts), [`module2.ts`](src/content/module2.ts), [`module3.ts`](src/content/module3.ts) binden diese ein und ergänzen Kurz-Zusammenfassungen sowie Self-Checks.
+
 - Prüfungen: [`src/content/index.ts`](src/content/index.ts) (`moduleExamQuestions`, `finalExamQuestions`)
-- Checkliste Modul 3: [`src/content/module3Checklist.ts`](src/content/module3Checklist.ts)
+- Interaktive Checkliste Modul 3: [`src/content/module3Checklist.ts`](src/content/module3Checklist.ts) (Kriterien wie in der Handbuch-Tabelle)
 - PDF-Texte: [`src/lib/certificate.ts`](src/lib/certificate.ts), [`src/lib/constants.ts`](src/lib/constants.ts)
+
+Zum Neu-Generieren aus `.docx` können die Rohabsätze nach `.extracted/*.json` exportiert und per Skript in `*.generated.ts` geschrieben werden (siehe Git-Historie / interne Skripte).
 
 ## Lizenz / Urheberhinweis
 

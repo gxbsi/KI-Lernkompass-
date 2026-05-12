@@ -21,17 +21,20 @@ export function AppShell({ fontScalePct, onFontScale, onResetProgress, progress 
       >
         Zum Inhalt springen
       </a>
-      <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
-          <Link to="/" className="group flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--color-navy)] text-sm font-bold text-[var(--color-paper)] shadow">
+      <header className="border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto grid min-w-0 max-w-6xl grid-cols-1 items-center gap-x-4 gap-y-3 px-4 py-4 sm:grid-cols-[minmax(0,auto)_minmax(0,1fr)_auto] sm:gap-y-2">
+          <Link to="/" className="group flex min-w-0 items-center gap-3 justify-self-start">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--color-navy)] text-sm font-bold text-[var(--color-paper)] shadow">
               KI
             </span>
-            <span className="font-display text-lg font-semibold text-[var(--color-navy)] group-hover:underline">
-              Mini-Lernplattform
+            <span className="font-display min-w-0 text-lg font-semibold leading-tight text-[var(--color-navy)] group-hover:underline sm:max-w-[14rem] md:max-w-none">
+              KI-Lernkompass
             </span>
           </Link>
-          <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold" aria-label="Hauptnavigation">
+          <nav
+            className="flex min-w-0 flex-wrap items-center gap-2 text-sm font-semibold sm:justify-self-end"
+            aria-label="Hauptnavigation"
+          >
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -70,7 +73,7 @@ export function AppShell({ fontScalePct, onFontScale, onResetProgress, progress 
               Zertifikat
             </NavLink>
           </nav>
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600 sm:justify-self-end">
             <span className="hidden sm:inline">Schrift:</span>
             {[100, 110, 125].map((pct) => (
               <button
@@ -86,7 +89,7 @@ export function AppShell({ fontScalePct, onFontScale, onResetProgress, progress 
         </div>
       </header>
 
-      <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-4 py-10">
+      <main id="main" className="mx-auto min-w-0 w-full max-w-6xl flex-1 px-4 py-8 sm:py-10">
         <Outlet />
       </main>
 

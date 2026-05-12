@@ -37,7 +37,7 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
   if (finished) {
     const passed = score() >= PASS_THRESHOLD;
     return (
-      <div className="card max-w-2xl">
+      <div className="card max-w-2xl min-w-0">
         <h1 className="font-display text-3xl font-semibold text-[var(--color-navy)]">Ergebnis</h1>
         <p className="mt-3 text-lg text-slate-700">
           Du hast{" "}
@@ -51,14 +51,14 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
         ) : (
           <p className="mt-2 text-red-800">Noch nicht bestanden – bitte erneut versuchen.</p>
         )}
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a className="btn-secondary" href={onCancelPath}>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a className="btn-secondary w-full justify-center text-center sm:w-auto" href={onCancelPath}>
             Zurück
           </a>
           {!passed ? (
             <button
               type="button"
-              className="btn-primary"
+              className="btn-primary w-full justify-center sm:w-auto"
               onClick={() => {
                 setFinished(false);
                 setIdx(0);
@@ -68,7 +68,7 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
               Quiz neu starten
             </button>
           ) : passLink ? (
-            <Link className="btn-primary" to={passLink.to}>
+            <Link className="btn-primary w-full justify-center text-center sm:w-auto" to={passLink.to}>
               {passLink.label}
             </Link>
           ) : null}
@@ -78,7 +78,7 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
   }
 
   return (
-    <div className="card max-w-2xl">
+    <div className="card max-w-2xl min-w-0">
       <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
         {title}
       </p>
@@ -100,25 +100,26 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
         {q.options.map((o) => (
           <label
             key={o.id}
-            className={`flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 ${
+            className={`flex min-w-0 cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 ${
               answers[q.id] === o.id ? "border-[var(--color-navy)] bg-[var(--color-cream)]/60" : "border-slate-200"
             }`}
           >
             <input
               type="radio"
+              className="mt-1 shrink-0"
               name={q.id}
               checked={answers[q.id] === o.id}
               onChange={() => setAnswers((prev) => ({ ...prev, [q.id]: o.id }))}
             />
-            <span className="text-sm leading-snug">{o.label}</span>
+            <span className="min-w-0 flex-1 text-sm leading-snug break-words">{o.label}</span>
           </label>
         ))}
       </fieldset>
 
-      <div className="mt-8 flex flex-wrap justify-between gap-3">
+      <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
         <button
           type="button"
-          className="btn-ghost"
+          className="btn-ghost w-full justify-center sm:w-auto"
           disabled={idx === 0}
           onClick={() => setIdx((i) => Math.max(0, i - 1))}
         >
@@ -127,7 +128,7 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
         {idx < questions.length - 1 ? (
           <button
             type="button"
-            className="btn-primary"
+            className="btn-primary w-full justify-center sm:w-auto"
             disabled={!answers[q.id]}
             onClick={() => setIdx((i) => i + 1)}
           >
@@ -136,7 +137,7 @@ export function QuizRunner({ title, questions, onPass, onCancelPath, passLink }:
         ) : (
           <button
             type="button"
-            className="btn-primary"
+            className="btn-primary w-full justify-center sm:w-auto"
             disabled={questions.some((qq) => !answers[qq.id])}
             onClick={submitFinal}
           >

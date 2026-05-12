@@ -21,29 +21,31 @@ export function CompassGallery() {
         </div>
       </div>
 
-      <div className="relative mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-950/5">
-        <img
-          src={IMAGES[active]}
-          alt={`Kompass-Folie ${active + 1}`}
-          className="mx-auto max-h-[min(70vh,720px)] w-full object-contain"
-          loading={active === 0 ? "eager" : "lazy"}
-        />
-        <div className="absolute inset-x-0 bottom-0 flex justify-between gap-2 bg-gradient-to-t from-black/50 to-transparent p-4">
+      <div className="mt-6 space-y-4">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+          <img
+            src={IMAGES[active]}
+            alt={`Kompass-Folie ${active + 1}`}
+            className="mx-auto max-h-[min(65vh,680px)] w-full object-contain"
+            loading={active === 0 ? "eager" : "lazy"}
+          />
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
           <button
             type="button"
-            className="btn bg-white/95 text-[var(--color-navy)] shadow"
+            className="btn-primary w-full justify-center sm:w-auto"
             onClick={() => setActive((i) => (i - 1 + IMAGES.length) % IMAGES.length)}
             aria-label="Vorherige Folie"
           >
-            Zurück
+            ← Vorherige Folie
           </button>
           <button
             type="button"
-            className="btn bg-white/95 text-[var(--color-navy)] shadow"
+            className="btn-primary w-full justify-center sm:w-auto"
             onClick={() => setActive((i) => (i + 1) % IMAGES.length)}
             aria-label="Nächste Folie"
           >
-            Weiter
+            Nächste Folie →
           </button>
         </div>
       </div>

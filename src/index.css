@@ -25,11 +25,12 @@
     font-family: var(--font-sans);
   }
 
+  /* Keine feste Textfarbe: sonst z. B. Hero-H1 auf dunklem Grund unleserlich (Kontrast / Abschneiden). */
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    @apply tracking-tight text-[var(--color-navy)];
+    @apply tracking-tight text-[var(--color-ink)];
   }
 
   :focus-visible {
@@ -48,28 +49,57 @@
 }
 
 @layer components {
+  /* Kapitel-Lesefläche: klar abgegrenzt, Tabellen/Assets können darin „Material-getreu“ wirken */
+  .prose-surface {
+    @apply rounded-2xl border border-slate-200/90 bg-white/90 p-5 shadow-sm sm:p-8;
+  }
+
   .prose-module {
-    @apply max-w-3xl text-[1.05rem] leading-relaxed text-slate-800;
+    @apply max-w-none text-[1.05rem] leading-relaxed text-slate-800;
+  }
+
+  .prose-module > :first-child {
+    @apply mt-0;
+  }
+
+  .prose-module h1 {
+    @apply mt-8 mb-4 text-3xl font-semibold text-[var(--color-navy)];
   }
 
   .prose-module h2 {
-    @apply mt-10 mb-4 text-2xl font-semibold;
+    @apply mt-10 mb-4 border-b border-slate-200 pb-2 text-2xl font-semibold text-[var(--color-navy)];
   }
 
   .prose-module h3 {
-    @apply mt-8 mb-3 text-xl font-semibold;
+    @apply mt-8 mb-3 text-xl font-semibold text-[var(--color-navy)];
+  }
+
+  .prose-module h4 {
+    @apply mt-6 mb-2 text-lg font-semibold text-[var(--color-navy)];
+  }
+
+  .prose-module h5,
+  .prose-module h6 {
+    @apply mt-5 mb-2 text-base font-semibold text-slate-800;
   }
 
   .prose-module p {
-    @apply mb-4;
+    @apply mb-4 max-w-[65ch] text-pretty;
   }
 
   .prose-module ul {
-    @apply mb-4 list-disc space-y-2 pl-6;
+    @apply mb-4 max-w-[65ch] list-disc space-y-2 pl-6;
   }
 
   .prose-module ol {
-    @apply mb-4 list-decimal space-y-2 pl-6;
+    @apply mb-4 max-w-[65ch] list-decimal space-y-2 pl-6;
+  }
+
+  .prose-module ul ul,
+  .prose-module ul ol,
+  .prose-module ol ul,
+  .prose-module ol ol {
+    @apply my-2 mb-0 max-w-none;
   }
 
   .prose-module strong {
@@ -81,19 +111,91 @@
   }
 
   .prose-module blockquote {
-    @apply border-l-4 border-[var(--color-gold)] bg-[var(--color-cream)]/80 py-2 pl-4 pr-3 italic text-slate-700;
+    @apply mb-4 max-w-[65ch] border-l-4 border-[var(--color-gold)] bg-[var(--color-cream)]/80 py-2 pl-4 pr-3 italic text-slate-700;
   }
 
-  .prose-module table {
-    @apply my-6 w-full border-collapse overflow-hidden rounded-xl text-sm;
+  .prose-module hr {
+    @apply my-10 border-0 border-t-2 border-slate-200;
   }
 
-  .prose-module th {
-    @apply bg-[var(--color-navy)] px-3 py-2 text-left font-semibold text-[var(--color-paper)];
+  .prose-module code {
+    @apply rounded-md bg-[var(--color-cream)] px-1.5 py-0.5 font-mono text-[0.9em] text-slate-900;
   }
 
-  .prose-module td {
-    @apply border border-slate-200 bg-white px-3 py-2 align-top;
+  .prose-module pre code {
+    @apply m-0 block bg-transparent p-0 font-mono text-[0.9em] font-normal leading-relaxed text-slate-100;
+  }
+
+  /* Tabellen: eigener Scroll-Rahmen, keine Quetschung; Spaltenbreiten wie im Markdown */
+  .prose-table-scroll {
+    @apply my-8 max-w-none overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .prose-table-scroll:focus-visible {
+    @apply outline-2 outline-offset-2 outline-[var(--color-gold)];
+  }
+
+  .prose-table-scroll table {
+    @apply m-0 w-max min-w-full border-collapse text-sm;
+  }
+
+  .prose-module caption,
+  .prose-table-scroll caption {
+    @apply border border-b-0 border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm font-semibold text-[var(--color-navy)];
+  }
+
+  .prose-module th,
+  .prose-table-scroll th {
+    @apply break-words bg-[var(--color-navy)] px-3 py-2.5 text-left text-sm font-semibold text-[var(--color-paper)];
+  }
+
+  .prose-module td,
+  .prose-table-scroll td {
+    @apply border border-slate-200 bg-white px-3 py-2.5 align-top text-slate-800;
+  }
+
+  .prose-module tbody tr:nth-child(even) td,
+  .prose-table-scroll tbody tr:nth-child(even) td {
+    @apply bg-slate-50/90;
+  }
+
+  .prose-module thead th,
+  .prose-table-scroll thead th {
+    @apply border border-[var(--color-navy-deep)]/40;
+  }
+
+  /* GFM: Aufgabenlisten */
+  .prose-module ul.contains-task-list {
+    @apply max-w-[65ch] list-none pl-0;
+  }
+
+  .prose-module li.task-list-item {
+    @apply flex items-start gap-2;
+  }
+
+  .prose-module li.task-list-item > p {
+    @apply mb-0 mt-0 flex-1;
+  }
+
+  .prose-module .task-list-item input[type="checkbox"] {
+    @apply mt-1.5 size-4 shrink-0 rounded border-slate-300 accent-[var(--color-navy)];
+  }
+
+  .prose-module del {
+    @apply text-slate-500 line-through;
+  }
+
+  .prose-module dl {
+    @apply mb-4 max-w-[65ch] space-y-2;
+  }
+
+  .prose-module dt {
+    @apply font-semibold text-[var(--color-navy)];
+  }
+
+  .prose-module dd {
+    @apply mb-2 ml-0 border-l-2 border-slate-200 pl-4 text-slate-700;
   }
 
   .btn {
@@ -127,9 +229,4 @@
     @apply rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm backdrop-blur-sm;
   }
 
-  .ring-progress {
-    stroke-linecap: round;
-    transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-  }
 }
