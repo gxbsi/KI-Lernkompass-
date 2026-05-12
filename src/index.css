@@ -55,7 +55,7 @@
   }
 
   .prose-module {
-    @apply max-w-none text-[1.05rem] leading-relaxed text-slate-800;
+    @apply max-w-none text-[1.0625rem] leading-[1.65] text-slate-800;
   }
 
   .prose-module > :first-child {
@@ -63,36 +63,36 @@
   }
 
   .prose-module h1 {
-    @apply mt-8 mb-4 text-3xl font-semibold text-[var(--color-navy)];
+    @apply mt-10 mb-5 font-display text-3xl font-semibold tracking-tight text-[var(--color-navy)];
   }
 
   .prose-module h2 {
-    @apply mt-10 mb-4 border-b border-slate-200 pb-2 text-2xl font-semibold text-[var(--color-navy)];
+    @apply mt-12 mb-5 border-b-2 border-[var(--color-gold)]/50 pb-2 font-display text-2xl font-semibold tracking-tight text-[var(--color-navy)] sm:text-3xl;
   }
 
   .prose-module h3 {
-    @apply mt-8 mb-3 text-xl font-semibold text-[var(--color-navy)];
+    @apply mt-10 mb-3 font-display text-xl font-semibold tracking-tight text-[var(--color-navy)] sm:text-2xl;
   }
 
   .prose-module h4 {
-    @apply mt-6 mb-2 text-lg font-semibold text-[var(--color-navy)];
+    @apply mt-8 mb-2 font-display text-lg font-semibold text-[var(--color-navy)] sm:text-xl;
   }
 
   .prose-module h5,
   .prose-module h6 {
-    @apply mt-5 mb-2 text-base font-semibold text-slate-800;
+    @apply mt-6 mb-2 font-display text-base font-semibold text-slate-900 sm:text-lg;
   }
 
   .prose-module p {
-    @apply mb-4 max-w-[65ch] text-pretty;
+    @apply mb-5 max-w-[68ch] text-pretty text-slate-800;
   }
 
   .prose-module ul {
-    @apply mb-4 max-w-[65ch] list-disc space-y-2 pl-6;
+    @apply mb-5 max-w-[68ch] list-disc space-y-2.5 pl-6 marker:text-[var(--color-accent)];
   }
 
   .prose-module ol {
-    @apply mb-4 max-w-[65ch] list-decimal space-y-2 pl-6;
+    @apply mb-5 max-w-[68ch] list-decimal space-y-2.5 pl-6 marker:font-semibold marker:text-[var(--color-navy)];
   }
 
   .prose-module ul ul,
@@ -100,6 +100,10 @@
   .prose-module ol ul,
   .prose-module ol ol {
     @apply my-2 mb-0 max-w-none;
+  }
+
+  .prose-module li {
+    @apply leading-relaxed;
   }
 
   .prose-module strong {
@@ -111,7 +115,7 @@
   }
 
   .prose-module blockquote {
-    @apply mb-4 max-w-[65ch] border-l-4 border-[var(--color-gold)] bg-[var(--color-cream)]/80 py-2 pl-4 pr-3 italic text-slate-700;
+    @apply mb-5 max-w-[68ch] rounded-r-lg border-l-4 border-[var(--color-gold)] bg-[var(--color-cream)]/80 py-3 pl-5 pr-4 not-italic text-slate-800;
   }
 
   .prose-module hr {
@@ -128,7 +132,7 @@
 
   /* Tabellen: eigener Scroll-Rahmen, keine Quetschung; Spaltenbreiten wie im Markdown */
   .prose-table-scroll {
-    @apply my-8 max-w-none overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm;
+    @apply my-9 max-w-none overflow-x-auto rounded-xl border border-slate-300/90 bg-white shadow-md;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -167,7 +171,7 @@
 
   /* GFM: Aufgabenlisten */
   .prose-module ul.contains-task-list {
-    @apply max-w-[65ch] list-none pl-0;
+    @apply max-w-[68ch] list-none pl-0;
   }
 
   .prose-module li.task-list-item {
@@ -187,7 +191,7 @@
   }
 
   .prose-module dl {
-    @apply mb-4 max-w-[65ch] space-y-2;
+    @apply mb-5 max-w-[68ch] space-y-2;
   }
 
   .prose-module dt {

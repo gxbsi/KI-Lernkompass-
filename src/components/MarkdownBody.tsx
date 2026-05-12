@@ -1,6 +1,7 @@
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { normalizeLearningMarkdown } from "@/lib/normalizeLearningMarkdown";
 
 type Props = {
   markdown: string;
@@ -56,10 +57,11 @@ const markdownComponents: Components = {
 };
 
 export function MarkdownBody({ markdown }: Props) {
+  const md = normalizeLearningMarkdown(markdown);
   return (
     <div className="prose-module">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
-        {markdown}
+        {md}
       </ReactMarkdown>
     </div>
   );
